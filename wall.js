@@ -84,7 +84,6 @@ $(function () {
     $('.new-comment').keyup(function (e) {
         var that = this;
         var text = $(that).val().replace("\n","");
-        alert(text);
         if (e.keyCode == '13' && text){
             var tripid = $(that).attr("data-tripid");
             var commentText = $(that).val();
