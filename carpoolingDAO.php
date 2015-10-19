@@ -225,5 +225,47 @@
             return false;
         }
     }
-        
+
+    /*
+    * This function selects all trip posts
+    * @return fetched data if successful else return null
+    */
+    function getAllTrips($userid) {
+        global $db;
+        try {
+            $stmt = $db->prepare("SELECT t.*, u.username, u.password, u.email 
+                                FROM `trips` as t LEFT JOIN users as u ON t.user_id = u.user_id
+                                AND u.user_id != :userid
+                                ORDER BY t.created_date DESC");
+            $stmt->execute(array(':userid' => $userid));
+            $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datas;
+        }
+        catch (PDOException $e) {
+            print $e-> getMessage();
+            return null;
+        }    
+    } 
+    
+    /*
+    * This function get comments for each trip
+    * @return fetched data if successful else return null
+    */
+    function getCommentsByTrip($tripid) {
+        global $db;
+        try {
+            $stmt = $db->prepare("SELECT c.*, u.username, u.password, u.email 
+                                FROM `comments` as c, users as u, trips as t
+                                WHERE c.trip_id = t.trip_id
+                                AND t.user_id = t.user_id
+                                AND t.trip_id = :tripid");
+            $stmt->execute(array(':tripid' => $tripid));
+            $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datas;
+        }
+        catch (PDOException $e) {
+            print $e-> getMessage();
+            return null;
+        }    
+    } 
 ?>
