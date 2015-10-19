@@ -173,7 +173,11 @@
     function searchTripPostByKeyword($keyword) {
         global $db;
         try {
-            $stmt = $db->prepare("SELECT * from trips where trip_text LIKE :keyword");
+            $stmt = $db->prepare("SELECT t.*, u.username, u.password, u.email 
+                                FROM `trips` as t, users as u 
+                                WHERE t.user_id = u.user_id
+                                AND t.trip_text LIKE :keyword
+                                ORDER BY t.created_date DESC");
             $keyword = "%".$keyword."%";
             $stmt->execute(array(':keyword'=>$keyword));
             $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);

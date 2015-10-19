@@ -23,7 +23,7 @@
          <script src="js/bootstrap.js"></script>
         <script src="js/idangerous.swiper.min.js"></script>
         <script src="js/isotope.pkgd.min.js"></script>
-      
+        <script src="js/global.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.min.js"></script>
         <script src="wall.js"></script>
         <title>Car Pooling</title>
@@ -55,10 +55,28 @@
         </header>
         <div id="content-wrapper">
             <div class="container">
-                <div class="comment-form">                    <div class="row">                        <div class="col-md-2"> </div>                        <div class="col-md-7">                            <textarea id="postText" rows="1" style="width: 99%;"></textarea>                        </div>                        <div class="col-md-1">                             <button class="btn-success btn-lg" id="addPost" style="height: 100%;">Add</button>                        </div>                         <div class="col-md-2"> </div>                    </div>                                                      </div>                <div class="content-wrapper-content big-block type-3">
+                <div class="comment-form">
+                    <div class="row">
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-7">
+                            <textarea id="postText" rows="1" style="width: 99%;"></textarea>
+                        </div>
+                        <div class="col-md-1">
+                             <button class="btn-success btn-lg" id="addPost" style="height: 100%;">Add</button>
+                        </div>
+                         <div class="col-md-2"> </div>
+                    </div>
+                   
+                   
+                </div>
+                <div class="content-wrapper-content big-block type-3">
                     <?php
-                        
-                        $result = getAllTrips(1);
+                        if (isset($_POST["keyword"])) {
+                            $result = searchTripPostByKeyword($_POST["keyword"]);
+                        }
+                        else {
+                            $result = getAllTrips(1);
+                        }
                         foreach($result as $trip) {
                     ?>
                     <div id="<?="trip_".$trip["trip_id"]?>" class="row">
@@ -163,8 +181,8 @@
             </div>
             <div class="search-popup popup search-block">
                 <div class="title">Type the keyword</div>
-                <form action="http://demo.nrgthemes.com/projects/nrgblog/">
-                    <input type="text" placeholder="Search.." required="">
+                <form action="wall.php" method="POST">
+                    <input type="text" placeholder="Search.." required="" name="keyword">
                     <div class="h-search">
                         <i class="fa fa-search"></i>
                         <input type="submit">
