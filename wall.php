@@ -1,5 +1,8 @@
 <?php
+    session_start();
     include("carpoolingDAO.php");
+/* This is for testing purpose. Will remove after integrate with login screen */
+    $_SESSION["userId"] = 3;
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,7 +21,8 @@
          <script src="js/jquery-2.1.3.min.js"></script>
         <script src="js/idangerous.swiper.min.js"></script>
         <script src="js/isotope.pkgd.min.js"></script>
-        <script src="js/global.js"></script>
+<!--        <script src="js/global.js"></script>-->
+        <script src="wall.js"></script>
         <title>Car Pooling</title>
     </head>
     <body class="header style-2 style-3 bg-2">
@@ -48,12 +52,13 @@
         </header>
         <div id="content-wrapper">
             <div class="container">
-                <div>
-                    <textarea id="postText" rows="5" style="width: 90%;"> </textarea>
-                    <button id="addPost">Add Post</button>
-                </div>
+                    <div>
+                        <textarea id="postText" rows="5" style="width: 90%;"></textarea>
+                        <button id="addPost">Add Post</button>
+                    </div>
                 <div class="content-wrapper-content big-block type-3">
-                    <?php   $result = getAllTrips(1);
+                    <?php   
+                            $result = getAllTrips(1);
                             foreach($result as $trip) { ?>
                             <div class="row">
                             <div class="col-md-8 col-md-push-2">
