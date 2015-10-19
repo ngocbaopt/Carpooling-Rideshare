@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,18 +12,40 @@
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <style>
+            .center{
+                position: fixed;
+                top: 30%;
+                
+            }
+        </style>
 	</head>
 
 	<body>
-    <?php session_start() ?>
-	<div class="row">
+    
+    <div class ="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-        <?php if(isset($_SESSION["loginError"])){
-        echo $_SESSION["loginError"];
-        $_SESSION["loginError"] = null;
-        } ?>
-        <form class="form-horizontal" action="login_submit.php" method="post">
+                <?php if(isset($_SESSION["loginError"])){
+                echo $_SESSION["loginError"];
+                $_SESSION["loginError"] = null;
+            } 
+            if(isset($_SESSION["register"])){
+                echo $_SESSION["register"];
+                $_SESSION["register"] = null;
+            }
+            ?>
+            </div>
+        <div class="col-md-4"></div>
+        </div>
+	<div class="row" >
+        <div class="col-md-4">
+        
+        </div>
+        <div class="col-md-4">
+            
+        
+        <form class="form-horizontal, center" action="login_submit.php" method="post">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
     <div class="col-sm-10">
@@ -39,7 +62,7 @@
     <div class="col-sm-offset-2 col-sm-10">
       <div class="checkbox">
         <label>
-          <input type="checkbox" name="remember" value="true"> Remember me
+          <input type="checkbox" name="remember[]" id="remember" value="true"> Remember me
         </label>
       </div>
     </div>
@@ -47,6 +70,8 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-s7c">Sign in</button>
+        <h6>Don't have an account?</h6>
+        <a href="register.php">Sign Up Here!</a>
     </div>
   </div>
 </form></div>
