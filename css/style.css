@@ -5866,20 +5866,18 @@ ul {
 
     .comment .text {
         font-family: 'Source Sans Pro';
-        font-size: 12px;
+        font-size: 14px;
         line-height: 26px;
         font-style: italic;
-        color: #c2c2c2;
         letter-spacing: 1px;
     }
 /*comment form*/
 .comment-form input, .comment-form textarea {
     background: transparent;
     border: 1px solid #f4f4f4;
-    color: #c2c2c2;
     letter-spacing: 1px;
     font-family: 'Source Sans Pro';
-    font-size: 12px;
+    font-size: 20px;
     margin-bottom: 20px;
     text-align: left;
 }
@@ -5906,7 +5904,6 @@ ul {
     }
 
     .comment-form textarea {
-        height: 149px;
         width: 100%;
         padding: 4px 26px;
         line-height: 32px;

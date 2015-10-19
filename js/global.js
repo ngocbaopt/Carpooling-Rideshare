@@ -315,18 +315,5 @@ $(function() {
 		}
 		return false
 	});
-	
-	
-
-
-    $("#addPost").click(function () {
-        $.ajax({
-            url: "addTrip.php",
-            type: "POST",
-            data: { "postText": $("#newPostText").val() }
-        }).done(function () { 
-                    
-        });
-    });
 
             })();
