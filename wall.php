@@ -1,8 +1,6 @@
 <?php
         session_start();
         include("carpoolingDAO.php");
-    /* This is for testing purpose. Will remove after integrate with login screen */
-        $_SESSION["userId"] = 3;
 ?>
 <!DOCTYPE html>
 <html>
@@ -72,6 +70,7 @@
                 <!--<form action="wall.php" method = "post">
                     <button name="favoriteTrip">Favorite Trip</button>
                     <button name="newTrip">Neweset trips</button>
+<<<<<<< HEAD
                 </form>-->
                 
                 <select name="selectedtrips" id="selectedtrips">
@@ -80,6 +79,10 @@
                     <option value="favorite">Favorite Trips</option>
                 </select>
                 <div class="content-wrapper-content big-block type-3">
+=======
+                </form>
+                <div class="content-wrapper-content big-block type-3" id="postList">
+>>>>>>> origin/master
                     <?php
                         if (isset($_POST["newTrip"])) {
                             $result = searchNewestTripPost($_POST["newTrip"]);
@@ -91,7 +94,7 @@
                             $result = searchTripPostByKeyword($_POST["keyword"]);
                         }
                         else {
-                            $result = getAllTrips(1);
+                            $result = getAllTrips();
                         }
                         foreach($result as $trip) {
                     ?>
@@ -185,6 +188,7 @@
                                     <?php } ?>
                                 </div>
                             </div>
+                              </div>
                             <div class="col-sm-6 col-md-2 col-md-pull-8">
                             </div>
                             <div class="col-sm-6 col-md-2">
@@ -193,7 +197,6 @@
                         <?php } ?>
                     </div>
                 </div>
-            </div>
             </div>
             <div class="search-popup popup search-block">
                 <div class="title">Type the keyword</div>
