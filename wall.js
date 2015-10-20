@@ -124,6 +124,10 @@ $(function () {
             $("#clscomm_" + commentid).click();
         })
     });
+    
+    setTimeout(function() {
+        
+    }, 30000);
 });
 
 function onSuccess() {
