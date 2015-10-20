@@ -69,10 +69,16 @@
                    
                    
                 </div>
-                <form action="wall.php" method = "post">
+                <!--<form action="wall.php" method = "post">
                     <button name="favoriteTrip">Favorite Trip</button>
                     <button name="newTrip">Neweset trips</button>
-                </form>
+                </form>-->
+                
+                <select name="selectedtrips" id="selectedtrips">
+                    
+                    <option value="latest">Latest Trips</option>
+                    <option value="favorite">Favorite Trips</option>
+                </select>
                 <div class="content-wrapper-content big-block type-3">
                     <?php
                         if (isset($_POST["newTrip"])) {

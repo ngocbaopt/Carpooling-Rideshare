@@ -118,6 +118,21 @@ $(function () {
             $("#clscomm_" + commentid).click();
         })
     });
+    
+    $("#selectedtrips").change(function () {
+        var selectedtrip = $("#selectedtrips option:selected").val();
+        $.ajax({
+            url: "latestTrip.php",
+            dataType: "html",
+            type: "post",
+            data: {
+                selectedTrip: selectedtrip
+            }
+        }).done(function (data) {
+            $()
+        })
+    });
+    
 });
 
 function onSuccess() {
