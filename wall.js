@@ -4,7 +4,12 @@ $(function () {
         evt.preventDefault();
         var postText = $("#postText").val();
         $.post('addTrip.php', { postText: postText })
-    .done(onSuccess)
+      .done(onSuccess)
+//    .done(function(data) {
+//            $("#postlist").append(data);
+//            debugger;
+//            swal("Added successfully!");
+//        })
     .fail(onError);
     });
 
@@ -25,7 +30,9 @@ $(function () {
                 type: "POST",
                 data: { tripId: $(that).attr("data-tripid") }
             }).done(function () {
+                debugger;
                 $("#trip_" + $(that).attr("data-tripid")).remove();
+                
                 swal("Deleted!", "Your trip has been deleted.", "success");
             })
         });
@@ -120,8 +127,11 @@ $(function () {
     });
 });
 
-function onSuccess() {
+function onSuccess(data) {
+    $("#postlist").append(data);
+    debugger;
     swal("Added successfully!");
+
 }
 function onError() {
     swal("Error in adding trip!");

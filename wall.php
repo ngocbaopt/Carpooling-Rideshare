@@ -1,8 +1,6 @@
 <?php
         session_start();
         include("carpoolingDAO.php");
-    /* This is for testing purpose. Will remove after integrate with login screen */
-        $_SESSION["userId"] = 3;
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,13 +67,13 @@
                    
                    
                 </div>
-                <div class="content-wrapper-content big-block type-3">
+                <div class="content-wrapper-content big-block type-3" id="postList">
                     <?php
                         if (isset($_POST["keyword"])) {
                             $result = searchTripPostByKeyword($_POST["keyword"]);
                         }
                         else {
-                            $result = getAllTrips(1);
+                            $result = getAllTrips();
                         }
                         foreach($result as $trip) {
                     ?>
@@ -169,6 +167,7 @@
                                     <?php } ?>
                                 </div>
                             </div>
+                              </div>
                             <div class="col-sm-6 col-md-2 col-md-pull-8">
                             </div>
                             <div class="col-sm-6 col-md-2">
@@ -177,7 +176,6 @@
                         <?php } ?>
                     </div>
                 </div>
-            </div>
             </div>
             <div class="search-popup popup search-block">
                 <div class="title">Type the keyword</div>
