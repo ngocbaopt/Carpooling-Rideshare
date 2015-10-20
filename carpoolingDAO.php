@@ -18,11 +18,18 @@
                                  ':userid'=>$userid)); 
             $newid = $db->lastInsertId();
             $db->commit();
-            return $newid;
+            $stmt = $db->prepare("SELECT t.*, u.username, u.password, u.email 
+                                FROM `trips` as t, users as u 
+                                WHERE t.user_id = u.user_id
+                                AND t.trip_id = :newid
+                                ORDER BY t.created_date DESC");
+            $stmt->execute(array(':newid'=>$newid));
+            $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datas[0];
         }
         catch (PDOException $e) {
             print $e-> getMessage();
-            return 0;
+            return null;
         }
     }
                                  
@@ -239,14 +246,13 @@
     * This function selects all trip posts
     * @return fetched data if successful else return null
     */
-    function getAllTrips($userid) {
+    function getAllTrips() {
         global $db;
         try {
             $stmt = $db->prepare("SELECT t.*, u.username, u.password, u.email 
                                 FROM `trips` as t LEFT JOIN users as u ON t.user_id = u.user_id
-                                AND u.user_id != :userid
                                 ORDER BY t.created_date DESC");
-            $stmt->execute(array(':userid' => $userid));
+            $stmt->execute();
             $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $datas;
         }

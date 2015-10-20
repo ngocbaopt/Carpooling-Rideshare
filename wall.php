@@ -67,22 +67,12 @@
                    
                    
                 </div>
-                <!--<form action="wall.php" method = "post">
-                    <button name="favoriteTrip">Favorite Trip</button>
-                    <button name="newTrip">Neweset trips</button>
-<<<<<<< HEAD
-                </form>-->
-                
-                <select name="selectedtrips" id="selectedtrips">
-                    
+
+                <select name="selectedtrips" id="selectedtrips">      
                     <option value="latest">Latest Trips</option>
                     <option value="favorite">Favorite Trips</option>
                 </select>
-                <div class="content-wrapper-content big-block type-3">
-=======
-                </form>
                 <div class="content-wrapper-content big-block type-3" id="postList">
->>>>>>> origin/master
                     <?php
                         if (isset($_POST["newTrip"])) {
                             $result = searchNewestTripPost($_POST["newTrip"]);
