@@ -101,6 +101,5 @@
             </div>
         </div>";
     echo $html;
-    return $html;
 ?>
 

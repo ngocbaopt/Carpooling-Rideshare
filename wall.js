@@ -4,12 +4,11 @@ $(function () {
         evt.preventDefault();
         var postText = $("#postText").val();
         $.post('addTrip.php', { postText: postText })
-      .done(onSuccess)
-//    .done(function(data) {
-//            $("#postlist").append(data);
-//            debugger;
-//            swal("Added successfully!");
-//        })
+    .done(function(data) {
+        $("#postText").val("");
+        $("#postList").append(data);
+        swal("Added successfully!");           
+        })
     .fail(onError);
     });
 
@@ -127,9 +126,7 @@ $(function () {
     });
 });
 
-function onSuccess(data) {
-    $("#postlist").append(data);
-    debugger;
+function onSuccess() {
     swal("Added successfully!");
 
 }
