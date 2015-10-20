@@ -6,7 +6,7 @@ $(function () {
         $.post('addTrip.php', { postText: postText })
     .done(function(data) {
         $("#postText").val("");
-        $("#postList").append(data);
+        $("#postList").prepend(data);
         swal("Added successfully!");           
         })
     .fail(onError);
