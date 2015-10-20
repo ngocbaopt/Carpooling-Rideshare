@@ -31,7 +31,7 @@
             }
             ?>
             <h2 class="form-signin-heading">Please sign in</h2>
-            <label for="inputEmail" class="sr-only">Username</label>
+            <label for="inputname" class="sr-only">Username</label>
             <input type="text" id="inputname" class="form-control" placeholder="Username" required autofocus name="username">
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="password">

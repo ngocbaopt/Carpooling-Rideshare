@@ -1,7 +1,6 @@
-<?php include("dbConnect.php") ?>
-
 <?php
     session_start();
+    include("dbConnect.php");
     $name = $_POST["username"];
     $pass = $_POST["password"];
     $remember = $_POST["remember"];
