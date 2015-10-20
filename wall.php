@@ -67,9 +67,19 @@
                    
                    
                 </div>
+                <form action="wall.php" method = "post">
+                    <button name="favoriteTrip">Favorite Trip</button>
+                    <button name="newTrip">Neweset trips</button>
+                </form>
                 <div class="content-wrapper-content big-block type-3" id="postList">
                     <?php
-                        if (isset($_POST["keyword"])) {
+                        if (isset($_POST["newTrip"])) {
+                            $result = searchNewestTripPost($_POST["newTrip"]);
+                        }
+                        else if(isset($_POST["favoriteTrip"])){
+                            $result = searchFavoritedTripPost($_POST["favoriteTrip"]);
+                        }
+                        else if (isset($_POST["keyword"])) {
                             $result = searchTripPostByKeyword($_POST["keyword"]);
                         }
                         else {

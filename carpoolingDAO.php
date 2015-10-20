@@ -142,7 +142,9 @@
     function searchNewestTripPost() {
         global $db;
         try {
-            $stmt = $db->prepare("SELECT * from trips ORDER by created_date DESC LIMIT 20");
+            $stmt = $db->prepare("SELECT t.*, u.username, u.password, u.email 
+                                FROM `trips` as t, users as u 
+                                WHERE t.user_id = u.user_id ORDER by t.created_date DESC LIMIT 20");
             $stmt->execute(array());
             $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $datas;
@@ -160,7 +162,10 @@
     function searchFavoritedTripPost() {
         global $db;
         try {
-            $stmt = $db->prepare("SELECT t.* FROM trips as t, favorites as f WHERE t.trip_id = f.trip_id;");
+            $stmt = $db->prepare("SELECT t.*, u.username, u.password, u.email 
+                                FROM `trips` as t, users as u, favorites as f
+                                WHERE t.user_id = u.user_id AND t.trip_id = f.trip_id
+                                AND t.user_id = f.user_id;");
             $stmt->execute(array());
             $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $datas;
