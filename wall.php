@@ -29,12 +29,23 @@
     <body class="header style-2 style-3 bg-2">
 
         <header>
+            <div class="row">
+                <div class="col-md-5"> </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-link hidden" id="newPost">New Post</button>
+                </div>
+                 <div class="col-md-5"> </div>
+            </div>
             <div class="container">
                 <div class="top-line">
                     <a class="logo" href="index.html">Car Pooling</a>
                     <button class="cmn-toggle-switch"><span></span></button>
+                    
                 </div>
-                <a class="h-search"><i class="fa fa-search"></i></a>
+                <a class="h-search">
+                    <i class="fa fa-search"></i>
+ 
+                </a>
                 <div class="nav-container">
                     <nav class="main-nav">
                         <ul>

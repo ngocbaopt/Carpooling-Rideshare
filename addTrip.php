@@ -2,6 +2,7 @@
     session_start();
     include("carpoolingDAO.php");
     $postText = $_POST["postText"];
+    if (strlen($postText) > 0) {
     $userId = $_SESSION["userId"];
     $trip= addTripPost($postText, $userId);
     $html = "<div id=\"trip_".$trip["trip_id"]."\" class = \"row\" >
@@ -101,5 +102,6 @@
             </div>
         </div>";
     echo $html;
+    }
 ?>
 

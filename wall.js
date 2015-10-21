@@ -29,7 +29,6 @@ $(function () {
                 type: "POST",
                 data: { tripId: $(that).attr("data-tripid") }
             }).done(function () {
-                debugger;
                 $("#trip_" + $(that).attr("data-tripid")).remove();
                 
                 swal("Deleted!", "Your trip has been deleted.", "success");
@@ -125,7 +124,6 @@ $(function () {
         })
     });
     
-<<<<<<< HEAD
     $("#selectedtrips").change(function () {
         var selectedtrip = $("#selectedtrips option:selected").val();
         $.ajax({
@@ -136,15 +134,33 @@ $(function () {
                 selectedTrip: selectedtrip
             }
         }).done(function (data) {
-            $()
         })
     });
     
-=======
-    setTimeout(function() {
-        
+    var newPost = "";
+    var timeout = setInterval(function() {
+            $.get("getNewTripPost.php").done(function(data) {
+                if (data.length > 1) {
+                    if ($("#newPost").hasClass("hidden")) {
+                        $("#newPost").removeClass("hidden").addClass("show");
+                    }
+                    newPost = data;
+                }
+                else {
+                    if ($("#newPost").hasClass("show")) {
+                        $("#newPost").removeClass("show").addClass("hidden");
+                    }
+                }
+            }).fail(onError);            
     }, 30000);
->>>>>>> origin/master
+    
+    $("#newPost").click(function() {
+        $("#postList").empty();
+        $("#postList").append(newPost);
+        $(this).removeClass("show").addClass("hidden");
+        newPost = "";
+    });
+
 });
 
 function onSuccess() {
